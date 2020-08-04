@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+{% load filters %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板过滤器</title>
+    <style>
+        .red {
+            background-color: red
+        }
+
+        .yellow {
+            background-color: yellow
+        }
+
+        .green {
+            background-color: green
+        }
+    </style>
+</head>
+<body>
+使用for标签：<br>
+<ul>
+    {% for book in books %}
+        {#        forloop.counter 获取循环到第几次#}
+{#        {% if book.id == 1 %}#}
+        {% if book.id|mod %}
+            <li class="red">{{ book.btitle }}--{{ book.bpub_date|date:'Y年-m月-d日'}}</li>
+        {% elif book.id == 2 %}
+            <li class="yellow">{{ book.btitle }}--{{ book.bpub_date }}</li>
+        {% endif %}
+
+    {% endfor %}
+
+</ul>
+default过滤器：<br>
+{{ content|default:'hello' }}
+</body>
+</html>

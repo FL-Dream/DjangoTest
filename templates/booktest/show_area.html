@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地区展示</title>
+</head>
+<body>
+<ul>
+    {% for area in areas %}
+        <li>{{ area.title }}</li>
+    {% endfor %}
+</ul>
+{% if areas.has_previous %}
+    <a href="/booktest/show_areas{{ areas.previous_page_number }}">&lt;上一页</a>
+{% endif %}
+{% for pindex in areas.paginator.page_range %}
+    {% if pindex == areas.number %}
+        {{ pindex }}
+    {% else %}
+        <a href="/booktest/show_areas{{ pindex }}">{{ pindex }}</a>
+    {% endif %} 
+
+{% endfor %}
+{% if areas.has_next %}
+    <a href="/booktest/show_areas{{ areas.next_page_number }}">下一页&gt;</a>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板标签</title>
+    <style>
+        .red {
+            background-color: red
+        }
+
+        .yellow {
+            background-color: yellow
+        }
+
+        .green {
+            background-color: green
+        }
+    </style>
+</head>
+<body>
+使用for标签：<br>
+<ul>
+    {% for book in books %}
+        {#        forloop.counter 获取循环到第几次#}
+        {% if book.id == 1 %}
+            <li class="red">{{ forloop.counter }} -- {{ book.btitle }}</li>
+        {% elif book.id == 2 %}
+            <li class="yellow">{{ forloop.counter }} -- {{ book.btitle }}</li>
+        {% else %}
+            <li class="green">{{ forloop.counter }} -- {{ book.btitle }}</li>
+        {% endif %}
+
+    {% endfor %}
+
+</ul>
+</body>
+</html>

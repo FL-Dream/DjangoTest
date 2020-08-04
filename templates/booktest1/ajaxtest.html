@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX</title>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            // 绑定btnAjax的点击事件
+            $('#btnAjax').click(function () {
+                $.ajax({
+                    'url': '/ajax_handle',
+                    'dataType': 'json',
+                    'async': false, // 同步ajax请求
+                }).success(function (data) {
+                    // 进行处理
+                    if(data.code == 1){
+                        $('#message').show().html("提示信息")
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="ajax请求" id="btnAjax">
+<div  id = 'message'></div>
+</body>
+</html>

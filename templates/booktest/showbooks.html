@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>展示图书信息</title>
+</head>
+<body>
+<a href="/booktest/add">添加</a>
+图书信息如下：
+<ul>
+    {% for book in books %}
+        <li><a href="/booktest/{{ book.id }}">{{ book.btitle }}</a>---<a href="/booktest/delete/{{ book.id }}">删除</a></li>
+        {% empty %}
+        <li>没有数据</li>
+    {% endfor %}
+
+</ul>
+</body>
+</html>
